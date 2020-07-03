@@ -18,7 +18,7 @@ public class sample {
           searchBox.sendKeys("IT media");
           searchBox.submit();
 
-          driver.findElement(By.xpath("/html/body/div[5]/div[2]/div[9]/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div/div[1]/a")).click();;
+          driver.findElement(By.xpath("/html/body/div[5]/div[2]/div[9]/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div/div/div[1]/a")).click();
           Thread.sleep(5000);
           driver.quit();
     }
