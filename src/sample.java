@@ -1,7 +1,16 @@
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.supercsv.io.CsvListReader;
+import org.supercsv.io.ICsvListReader;
+import org.supercsv.prefs.CsvPreference;
+
 
 public class sample {
 
@@ -13,6 +22,23 @@ public class sample {
           driver.manage().window().maximize();
           driver.get("http://www.google.com");
           Thread.sleep(50);
+
+
+
+
+
+          try(ICsvListReader listReader = new CsvListReader(new FileReader("./data/kadi002.csv"), CsvPreference.STANDARD_PREFERENCE)) {
+              List<String> list = null;
+              for(Iterator it = list.iterator(); it.hasNext();) {
+                  System.out.println(it.next());
+              }
+              while ((list = listReader.read()) != null) ;
+          } catch (IOException e) {
+              throw new RuntimeException(e);
+          }
+
+
+
 
           WebElement searchBox = driver.findElement(By.name("q"));
           searchBox.sendKeys("IT media");
