@@ -6,9 +6,20 @@ public class sample {
     public static void main(String[] args) throws InterruptedException {
 
     	driverGet driverGet = new driverGet();
-    	WebDriver driver = driverGet.getDriver("Firefox"); //ChromeかFirefoxを指定
+    	WebDriver driver = driverGet.getDriver("Chrome"); //ChromeかFirefoxを指定
     	System.out.println(driver);
 
+    	MySQLConnector mysql = new MySQLConnector();
+    	System.out.println(mysql);
+    	System.out.println(mysql.getResult());
+    	String[] str = new String[] { //以下のテスト文で表記しやすいように配列に格納
+    			mysql.getResult()[0],
+    			mysql.getResult()[1],
+    			mysql.getResult()[2],
+    			mysql.getResult()[3]
+    	};
+
+    	/*
     	csvReader kadai002 = new csvReader("kadai002.csv"); //CSVの読み込み、読み込みたいファイル名を指定
     	kadai002.check(0); //使うデータの中身の確認、0＝先頭の行
     	String[] str = new String[] { //以下のテスト文で表記しやすいように配列に格納
@@ -17,6 +28,7 @@ public class sample {
     			kadai002.getListElement(0, 2),
     			kadai002.getListElement(0, 3)
     	};
+    	*/
 
     	driver.manage().window().maximize();
     	driver.get(str[0]);
