@@ -10,7 +10,7 @@ public class sample {
     	System.out.println(driver);
 
     	MySQLConnector mysql = new MySQLConnector();
-    	String[] str = mysql.getResult(1);
+    	String[] str = mysql.getResult(1); //SQLの一行目の情報を取得し配列に格納
 
     	/*
     	csvReader kadai002 = new csvReader("kadai002.csv"); //CSVの読み込み、読み込みたいファイル名を指定

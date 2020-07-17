@@ -7,11 +7,7 @@ import java.util.ArrayList;
 public class MySQLConnector {
 	static final String URL = "jdbc:mysql://localhost/test_db";
     static final String USERNAME = "root";
-<<<<<<< HEAD
     static final String PASSWORD = "****************";
-=======
-    static final String PASSWORD = "*************";
->>>>>>> 44b62774316ac4085549d1b6bba2ba980b2ec185
     private ArrayList<String[]> resultArray = new ArrayList<String[]>();//コンストラクタによりSQLの行ごとの情報を配列としてArrayListに格納
 
     MySQLConnector() {
