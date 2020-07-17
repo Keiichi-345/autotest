@@ -2,22 +2,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class MySQLConnector {
 	static final String URL = "jdbc:mysql://localhost/test_db";
     static final String USERNAME = "root";
-    static final String PASSWORD = "**********";
+<<<<<<< HEAD
+    static final String PASSWORD = "****************";
+=======
+    static final String PASSWORD = "*************";
+>>>>>>> 44b62774316ac4085549d1b6bba2ba980b2ec185
+    private ArrayList<String[]> resultArray = new ArrayList<String[]>();//コンストラクタによりSQLの行ごとの情報を配列としてArrayListに格納
 
-    public String[] getResult(){
-    	String[] str = new String[4];
+    MySQLConnector() {
     	try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
     	        Statement statement = connection.createStatement()) {
     		String sql = "select * from test_db.kadai002";
     		ResultSet result = statement.executeQuery(sql);
+
+    		String[] array = new String[4];
+    		int i = 0;
     		while ( result.next() ) {
-    			for(int i = 1 ; i<5 ; i++) {
-                str[i-1] = result.getString(i);
+    			for(int j = 0 ; j<4 ; j++) {
+    				array[j] = result.getString(j+1);
     			}
+    			resultArray.add(i,array);
+    			System.out.println("----------------------------------------------------------------------------------");
+    			System.out.println(resultArray.get(i)[0]);
+    			System.out.println(resultArray.get(i)[1]);
+    			System.out.println(resultArray.get(i)[2]);
+    			System.out.println(resultArray.get(i)[3]);
+    			i++;
             }
 
     		result.close();
@@ -26,6 +41,20 @@ public class MySQLConnector {
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
-    	return str;
+    }
+
+    public  String[] getResult( int rowNumber ){
+    	return this.resultArray.get(rowNumber - 1);
+    }
+
+    public void check() {
+    	for (int i = 0;i<3;i++) {
+    		System.out.println("----------------------------------------------------------------------------------");
+    		for (int j = 0 ; j<4 ; j++) {
+    		System.out.println(this.resultArray.get(i)[j]);
+    		}
+
+    	}
+
     }
 }
